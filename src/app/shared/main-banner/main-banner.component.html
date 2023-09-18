@@ -1,9 +1,24 @@
 <section class="container mx-auto mt-8 relative">
-  <img
+  <section class="w-full shadow-lg">
+    <ng-content select="[banner-image]"></ng-content>
+  </section>
+  <section class="absolute top-10 left-10">
+    <ng-content select="[banner-heading]"></ng-content>
+  </section>
+
+  <!-- <img
     [src]="image"
     [alt]="alttext"
     data-title="{{ alttext }}"
-    class="w-full rounded-md shadow-lg"
-  />
-  <h1 (click)="headingClickHandler($event)" *ngIf="heading" class="absolute top-10 left-10">{{ heading }}</h1>
+    class="w-full shadow-lg"
+    [ngClass]="{ 'rounded-md': rounded }"
+  /> -->
+  <!-- <h1
+    (click)="headingClickHandler($event)"
+    *ngIf="heading; else headingFallback"
+    [ngClass]="headingClass"
+    [ngStyle]="headingStyle()"
+  >
+    {{ heading }}
+  </h1> -->
 </section>
