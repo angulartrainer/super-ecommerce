@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { TopNavigationComponent } from './shared/top-navigation/top-navigation.component';
@@ -22,7 +22,7 @@ import { ProductService } from './services/product.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor(private _products : ProductService){
       
@@ -33,11 +33,15 @@ export class AppComponent {
   bannerImage = 'https://via.placeholder.com/1200x600';
   alttext = 'This is the banner image.';
 
-  products = this._products.products
+  $products = this._products.$products
 
   headingClickHandler(event: any) {
     console.log(event);
     console.log('Heading Clicked');
     this.alttext = 'This is the new value';
+  }
+
+  ngOnInit(){
+    this._products.getProducts();
   }
 }

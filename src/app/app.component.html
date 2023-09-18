@@ -5,5 +5,5 @@
   <h1 banner-heading>Hello World!!</h1>
 </super-main-banner>
 
-<super-featured-products [products]="products"></super-featured-products>
+<super-featured-products [products]="$products | async"></super-featured-products>
 <super-footer></super-footer>

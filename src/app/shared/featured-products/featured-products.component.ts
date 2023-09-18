@@ -10,5 +10,5 @@ import { IProduct } from 'src/interfaces/products';
   styleUrls: ['./featured-products.component.scss'],
 })
 export class FeaturedProductsComponent {
-  @Input() products: IProduct[] = [];
+  @Input() products: IProduct[] | null = [];
 }
