@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./top-navigation.component.scss'],
 })
 export class TopNavigationComponent {
-
+  applicationName: string = 'Super Ecommerce';
 }
