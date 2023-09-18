@@ -1,8 +1,9 @@
-<section class="container mx-auto mt-8">
+<section class="container mx-auto mt-8 relative">
   <img
     [src]="image"
     [alt]="alttext"
     data-title="{{ alttext }}"
     class="w-full rounded-md shadow-lg"
   />
+  <h1 (click)="headingClickHandler($event)" *ngIf="heading" class="absolute top-10 left-10">{{ heading }}</h1>
 </section>

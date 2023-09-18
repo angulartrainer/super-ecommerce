@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,8 +9,13 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./main-banner.component.scss'],
 })
 export class MainBannerComponent {
+  @Input() image: string = 'https://via.placeholder.com/1200x400';
+  @Input() alttext: string = '';
+  @Input() heading: string = '';
 
-  @Input() image : string = "https://via.placeholder.com/1200x400";
-  @Input() alttext : string = ""
+  @Output() headingclicked: EventEmitter<any> = new EventEmitter();
 
+  headingClickHandler(event: any) {
+    this.headingclicked.emit(event)
+  }
 }

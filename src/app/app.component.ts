@@ -5,6 +5,8 @@ import { TopNavigationComponent } from './shared/top-navigation/top-navigation.c
 import { MainBannerComponent } from './shared/main-banner/main-banner.component';
 import { FeaturedProductsComponent } from './shared/featured-products/featured-products.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { IProduct } from 'src/interfaces/products';
+import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'super-root',
@@ -21,9 +23,21 @@ import { FooterComponent } from './shared/footer/footer.component';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+
+  constructor(private _products : ProductService){
+      
+  }
+
   title = 'super-ecommerce';
 
-  bannerImage = "https://via.placeholder.com/1200x600";
-  alttext = "This is the banner image."
+  bannerImage = 'https://via.placeholder.com/1200x600';
+  alttext = 'This is the banner image.';
 
+  products = this._products.products
+
+  headingClickHandler(event: any) {
+    console.log(event);
+    console.log('Heading Clicked');
+    this.alttext = 'This is the new value';
+  }
 }

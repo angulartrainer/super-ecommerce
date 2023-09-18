@@ -1,4 +1,11 @@
 <super-top-navigation></super-top-navigation>
-<super-main-banner [image]="bannerImage" [alttext]="alttext"></super-main-banner>
-<super-featured-products></super-featured-products>
+
+<super-main-banner
+  [image]="bannerImage"
+  [alttext]="alttext"
+  [heading]="'this is a great product'"
+  (headingclicked)="headingClickHandler($event)"
+></super-main-banner>
+
+<super-featured-products [products]="products"></super-featured-products>
 <super-footer></super-footer>
