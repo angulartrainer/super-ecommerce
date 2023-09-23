@@ -1,5 +1,57 @@
 {
   "reviews": [{ "id": 1 }],
+  "top-discounted": [
+    {
+      "name": "Macbook Pro",
+      "desc": "Laptop",
+      "price": 100000,
+      "id": 1
+    },
+    {
+      "name": "Macbook Pro 16",
+      "desc": "Laptop",
+      "price": 140000,
+      "id": 2
+    },
+    {
+      "name": "Macbook Pro 14",
+      "desc": "Laptop",
+      "price": 150000,
+      "id": 3
+    },
+    {
+      "name": "Macbook Air",
+      "desc": "Laptop",
+      "price": 90000,
+      "id": 4
+    }
+  ],
+  "top-sellers": [
+    {
+      "name": "Macbook Pro",
+      "desc": "Laptop",
+      "price": 100000,
+      "id": 1
+    },
+    {
+      "name": "Macbook Pro 16",
+      "desc": "Laptop",
+      "price": 140000,
+      "id": 2
+    },
+    {
+      "name": "Macbook Pro 14",
+      "desc": "Laptop",
+      "price": 150000,
+      "id": 3
+    },
+    {
+      "name": "Macbook Air",
+      "desc": "Laptop",
+      "price": 90000,
+      "id": 4
+    }
+  ],
   "products": [
     {
       "name": "Macbook Pro",

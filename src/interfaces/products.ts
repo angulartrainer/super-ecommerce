@@ -3,3 +3,18 @@ export interface IProduct {
   price: number;
   desc: string;
 }
+
+export interface ITopSellerProduct {
+  name: string;
+  price: number;
+  desc: string;
+}
+
+
+export interface IDiscountedProduct {
+  name: string;
+  price: number;
+  desc: string;
+}
+
+

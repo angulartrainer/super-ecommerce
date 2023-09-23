@@ -7,6 +7,8 @@ import { FeaturedProductsComponent } from './shared/featured-products/featured-p
 import { FooterComponent } from './shared/footer/footer.component';
 import { IProduct } from 'src/interfaces/products';
 import { ProductService } from './services/product.service';
+import { TopSellersComponent } from './shared/top-sellers/top-sellers.component';
+import { TopDiscountedComponent } from './shared/top-discounted/top-discounted.component';
 
 @Component({
   selector: 'super-root',
@@ -18,6 +20,8 @@ import { ProductService } from './services/product.service';
     MainBannerComponent,
     FeaturedProductsComponent,
     FooterComponent,
+    TopSellersComponent,
+    TopDiscountedComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
