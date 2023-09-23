@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { UserService } from 'src/app/services/user.service';
 import { SuperRequired } from 'src/app/validators/super-required';
 import { CompareControls } from 'src/app/validators/compare-controls';
+import { ValidateUsernameAsync } from 'src/app/validators/validate-username';
 
 @Component({
   selector: 'super-register',
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit{
 
     ngOnInit(): void {
       this.registerForm = this._fb.group({
-          username: new FormControl("", [Validators.required]),
+          username: new FormControl("", [Validators.required], [ValidateUsernameAsync(this._user)]),
           email: new FormControl("", [Validators.required]),
           password: new FormControl("", [Validators.required, SuperRequired("india")]),
           confirmPassword: new FormControl("", [Validators.required]),
@@ -31,5 +32,9 @@ export class RegisterComponent implements OnInit{
       const { confirmPassword, ...rest } = this.registerForm.value;
       this._user.register({ ...rest }).subscribe()
     }
+
+    // removeCompare(){
+    //   this.registerForm.get("username")?.removeValidators(Validators.required);
+    // }
 
 }
