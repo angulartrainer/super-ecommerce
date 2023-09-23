@@ -26,26 +26,7 @@ import { TopDiscountedComponent } from './shared/top-discounted/top-discounted.c
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  constructor(private _products : ProductService){
-      
-  }
-
-  title = 'super-ecommerce';
-
-  bannerImage = 'https://via.placeholder.com/1200x600';
-  alttext = 'This is the banner image.';
-
-  $products = this._products.$products
-
-  headingClickHandler(event: any) {
-    console.log(event);
-    console.log('Heading Clicked');
-    this.alttext = 'This is the new value';
-  }
-
-  ngOnInit(){
-    this._products.getProducts();
-  }
+  
 }

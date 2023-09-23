@@ -1,0 +1,58 @@
+<div class="bg-gray-100 flex items-center justify-center h-screen">
+  <div class="bg-white p-8 shadow-md w-96 rounded-md">
+    <h2 class="text-2xl font-bold mb-4">Login</h2>
+    <form
+      #loginForm="ngForm"
+      (ngSubmit)="loginUser(loginForm)"
+      class="space-y-4"
+    >
+      <input
+        type="email"
+        placeholder="Email"
+        class="w-full p-2 border rounded-md"
+        ngModel
+        name="email"
+        required
+      />
+      <p
+        *ngIf="
+          loginForm.controls['email']?.invalid &&
+          loginForm.controls['email']?.touched
+        "
+        class="error text-red-600"
+      >
+        Email is required
+      </p>
+      <input
+        type="password"
+        placeholder="Password"
+        class="w-full p-2 border rounded-md"
+        ngModel
+        name="password"
+        required
+      />
+      <p
+        *ngIf="
+          loginForm.controls['password']?.invalid &&
+          loginForm.controls['password']?.touched
+        "
+        class="error text-red-600"
+      >
+        Password is required
+      </p>
+      <button
+        [disabled]="loginForm.invalid"
+        type="submit"
+        class="bg-blue-600 text-white p-2 px-4 rounded hover:bg-blue-700 w-full"
+      >
+        Login
+      </button>
+    </form>
+    <p class="mt-4 text-center">
+      New user?
+      <a href="register.html" class="text-blue-600 hover:underline"
+        >Register here</a
+      >
+    </p>
+  </div>
+</div>

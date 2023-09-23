@@ -1,5 +1,17 @@
 {
-  "reviews": [{ "id": 1 }],
+  "users": [
+    {
+      "email": "praveen@example.com",
+      "password": "$2a$10$Oax/gBzHYVWb455/0lI7zuQLRR6Eq4sLkD4p0vANN7bKA7zZhA.Rm",
+      "id": 1,
+      "username" : "praveen"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1
+    }
+  ],
   "top-discounted": [
     {
       "name": "Macbook Pro",

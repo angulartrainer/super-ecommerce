@@ -1,14 +1,5 @@
 <super-top-navigation></super-top-navigation>
 
-<super-main-banner>
-  <img banner-image src="https://via.placeholder.com/1200x400" />
-  <h1 banner-heading>Hello World!!</h1>
-</super-main-banner>
-
-<super-top-discounted></super-top-discounted>
-<super-top-sellers></super-top-sellers>
-<super-featured-products
-  [products]="$products | async"
-></super-featured-products>
+<router-outlet></router-outlet>
 
 <super-footer></super-footer>
