@@ -4,7 +4,13 @@
       "email": "praveen@example.com",
       "password": "$2a$10$Oax/gBzHYVWb455/0lI7zuQLRR6Eq4sLkD4p0vANN7bKA7zZhA.Rm",
       "id": 1,
-      "username" : "praveen"
+      "username": "praveen"
+    },
+    {
+      "email": "praveen1@example.com",
+      "password": "$2a$10$vKfoI.QF.JLLxBqH1eNpDeYQVngUz1jI9a6gf4lUpPkluxmykyj3O",
+      "username": "Praveen",
+      "id": 2
     }
   ],
   "reviews": [

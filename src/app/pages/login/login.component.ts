@@ -20,6 +20,7 @@ export class LoginComponent {
       console.log('make api call');
       console.log(form.value);
       const { email, password } = form.value;
+
       this._user.login(email, password).subscribe({
         error: ({error}) => {
           console.log(error);

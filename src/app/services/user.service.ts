@@ -26,4 +26,16 @@ export class UserService {
         })
       );
   }
+
+
+  register(user: { username: string, password: string, email: string }) {
+    return this._http
+      .post('http://localhost:3000/register', user)
+      .pipe(
+        tap((data: any) => {
+          this._router.navigate(['login']);
+          return data;
+        })
+      );
+  }
 }
