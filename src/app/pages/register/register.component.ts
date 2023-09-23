@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { SuperRequired } from 'src/app/validators/super-required';
+import { CompareControls } from 'src/app/validators/compare-controls';
 
 @Component({
   selector: 'super-register',
@@ -23,7 +24,7 @@ export class RegisterComponent implements OnInit{
           email: new FormControl("", [Validators.required]),
           password: new FormControl("", [Validators.required, SuperRequired("india")]),
           confirmPassword: new FormControl("", [Validators.required]),
-      })
+      }, { validators: [ CompareControls("password", "confirmPassword"), CompareControls("password", "username") ] })
     }
 
     registerUser(){
