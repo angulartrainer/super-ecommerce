@@ -13,12 +13,19 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent {
   constructor(private _user: UserService) {}
 
+  error: any = null;
+
   loginUser(form: NgForm) {
     if (form.valid) {
       console.log('make api call');
       console.log(form.value);
       const { email, password } = form.value;
-      this._user.login(email, password);
+      this._user.login(email, password).subscribe({
+        error: ({error}) => {
+          console.log(error);
+          this.error = error;
+        },
+      });
     } else {
       console.log('error in form');
     }

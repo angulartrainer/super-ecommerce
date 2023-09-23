@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { IUser } from 'src/interfaces/user';
 
 @Injectable({
@@ -13,14 +13,17 @@ export class UserService {
 
   user$ = this.user.asObservable();
 
-  constructor(private _http: HttpClient, private _router : Router) {}
+  constructor(private _http: HttpClient, private _router: Router) {}
 
   login(email: string, password: string) {
-    this._http
+    return this._http
       .post('http://localhost:3000/login', { email, password })
-      .subscribe((data: any) => {
-        this.user.next(data.user);
-        this._router.navigate([""])
-      });
+      .pipe(
+        tap((data: any) => {
+          this.user.next(data.user);
+          this._router.navigate(['']);
+          return data;
+        })
+      );
   }
 }

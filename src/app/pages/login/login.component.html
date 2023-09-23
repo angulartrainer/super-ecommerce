@@ -1,6 +1,8 @@
 <div class="bg-gray-100 flex items-center justify-center h-screen">
   <div class="bg-white p-8 shadow-md w-96 rounded-md">
     <h2 class="text-2xl font-bold mb-4">Login</h2>
+
+    <p *ngIf="error" class="text-red-600">Server error occured: {{error}}</p>
     <form
       #loginForm="ngForm"
       (ngSubmit)="loginUser(loginForm)"

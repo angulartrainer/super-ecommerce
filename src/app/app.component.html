@@ -1,5 +1,5 @@
-<super-top-navigation></super-top-navigation>
+<super-top-navigation *ngIf="user$ | async"></super-top-navigation>
 
 <router-outlet></router-outlet>
 
-<super-footer></super-footer>
+<super-footer *ngIf="user$ | async"></super-footer>

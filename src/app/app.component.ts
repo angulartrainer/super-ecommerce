@@ -9,6 +9,9 @@ import { IProduct } from 'src/interfaces/products';
 import { ProductService } from './services/product.service';
 import { TopSellersComponent } from './shared/top-sellers/top-sellers.component';
 import { TopDiscountedComponent } from './shared/top-discounted/top-discounted.component';
+import { UserService } from './services/user.service';
+import { IUser } from 'src/interfaces/user';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'super-root',
@@ -21,12 +24,15 @@ import { TopDiscountedComponent } from './shared/top-discounted/top-discounted.c
     FeaturedProductsComponent,
     FooterComponent,
     TopSellersComponent,
-    TopDiscountedComponent
+    TopDiscountedComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  user$!: Observable<IUser | null>;
 
-  
+  constructor(private _user: UserService) {
+    this.user$ = _user.user$;
+  }
 }
