@@ -1,4 +1,4 @@
-{{ registerForm.errors | json }}
+{{ registerForm.value | json }}
 
 <div class="bg-gray-100 flex items-center justify-center h-screen">
   <div class="bg-white p-8 shadow-md w-96 rounded-md">
@@ -8,38 +8,13 @@
       [formGroup]="registerForm"
       (ngSubmit)="registerUser()"
     >
-      <input
-        type="text"
-        placeholder="Username"
-        class="w-full p-2 border rounded-md"
-        formControlName="username"
-      />
-      <p *ngIf="registerForm.get('username')?.hasError('usernameExists')">
-        Username "{{ registerForm.get("username")?.value }}" already exists
-      </p>
-      <input
-        type="email"
-        placeholder="Email"
-        class="w-full p-2 border rounded-md"
-        formControlName="email"
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        class="w-full p-2 border rounded-md"
-        formControlName="password"
-      />
-      <input
-        type="password"
-        placeholder="Confirm Password"
-        class="w-full p-2 border rounded-md"
-        formControlName="confirmPassword"
-      />
+      <super-personal-info-form
+        formControlName="personal"
+      ></super-personal-info-form>
+      <!-- <super-employment-info-form
+        formControlName="employment"
+      ></super-employment-info-form> -->
 
-      <p *ngIf="registerForm.errors?.['compare']">
-        {{registerForm.errors?.['controlA']}} and
-        {{registerForm.errors?.['controlB']}} are not matching
-      </p>
       <button
         type="submit"
         class="bg-blue-600 text-white p-2 px-4 rounded hover:bg-blue-700 w-full"
