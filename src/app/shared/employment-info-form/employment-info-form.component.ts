@@ -10,11 +10,12 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { NumberSelectComponent } from '../number-select/number-select.component';
 
 @Component({
   selector: 'super-employment-info-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, NumberSelectComponent],
   templateUrl: './employment-info-form.component.html',
   styleUrls: ['./employment-info-form.component.scss'],
   providers: [
@@ -25,7 +26,9 @@ import {
     },
   ],
 })
-export class EmploymentInfoFormComponent implements ControlValueAccessor, OnInit {
+export class EmploymentInfoFormComponent
+  implements ControlValueAccessor, OnInit
+{
   employmentForm!: FormGroup;
 
   private onChange: any = () => {};
@@ -58,15 +61,19 @@ export class EmploymentInfoFormComponent implements ControlValueAccessor, OnInit
   }
 
   addNewExperience() {
-    const experiences = this.employmentForm.get('experiences') as FormArray;
-    experiences.push(
+    this.experiences.push(
       new FormGroup({
         companyName: new FormControl('', [Validators.required]),
         startDate: new FormControl(''),
         endDate: new FormControl(''),
         isCurrentCompany: new FormControl(''),
+        level: new FormControl(0),
       })
     );
+  }
+
+  deleteExperience(index: number) {
+    this.experiences.removeAt(index);
   }
 
   get experiences() {

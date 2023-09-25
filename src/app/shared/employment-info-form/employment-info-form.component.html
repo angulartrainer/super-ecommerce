@@ -27,6 +27,10 @@
         class="w-full p-2 border rounded-md"
         formControlName="isCurrentCompany"
       />
+
+      <super-number-select formControlName="level"></super-number-select>
+
+      <button *ngIf="i > 0" type="button" (click)="deleteExperience(i)">Delete</button>
     </div>
   </div>
   <button type="button" (click)="addNewExperience()">Add Experience</button>
