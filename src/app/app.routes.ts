@@ -8,6 +8,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProductResolverService } from './services/product-resolver.service';
 import { ProductReviewComponent } from './shared/product-review/product-review.component';
 import { ProductDescriptionComponent } from './shared/product-description/product-description.component';
+import { adminGuard } from './guard/admin.guard';
 
 export const routes: Routes = [
   {
@@ -45,6 +46,7 @@ export const routes: Routes = [
   },
   {
     path: 'admin/create-product',
+    canActivate: [ adminGuard ],
     loadComponent: () =>
       import('./pages/admin/create-product/create-product.component').then(
         (x) => x.CreateProductComponent

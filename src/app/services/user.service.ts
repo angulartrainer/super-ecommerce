@@ -12,6 +12,7 @@ export class UserService {
     new BehaviorSubject<IUser | null>(null);
 
   user$ = this.user.asObservable();
+  isAdminLoggedIn = false;
 
   constructor(private _http: HttpClient, private _router: Router) {}
 
@@ -22,6 +23,8 @@ export class UserService {
         tap((data: any) => {
           this.user.next(data.user);
           this._router.navigate(['']);
+          this.isAdminLoggedIn = true;
+          window.sessionStorage.setItem('isAdminLoggedIn', 'true');
           return data;
         })
       );
