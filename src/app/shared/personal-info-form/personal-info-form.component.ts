@@ -29,8 +29,6 @@ import { ValidateUsernameAsync } from 'src/app/validators/validate-username';
 export class PersonalInfoFormComponent implements ControlValueAccessor, OnInit {
   personal!: FormGroup;
 
-  value = {};
-
   private onChange: any = () => {};
   private onTouched: any = () => {};
 

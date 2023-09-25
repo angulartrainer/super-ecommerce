@@ -1,1 +1,33 @@
-<p>employment-info-form works!</p>
+<form [formGroup]="employmentForm">
+  <div formArrayName="experiences">
+    <div
+      *ngFor="let experience of experiences.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <input
+        type="text"
+        placeholder="Company Name"
+        class="w-full p-2 border rounded-md"
+        formControlName="companyName"
+      />
+      <input
+        type="text"
+        placeholder="Start Date"
+        class="w-full p-2 border rounded-md"
+        formControlName="startDate"
+      />
+      <input
+        type="text"
+        placeholder="End Date"
+        class="w-full p-2 border rounded-md"
+        formControlName="endDate"
+      />
+      <input
+        type="checkbox"
+        class="w-full p-2 border rounded-md"
+        formControlName="isCurrentCompany"
+      />
+    </div>
+  </div>
+  <button type="button" (click)="addNewExperience()">Add Experience</button>
+</form>
