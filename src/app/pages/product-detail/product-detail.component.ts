@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { IProduct } from 'src/interfaces/products';
 
@@ -11,18 +11,17 @@ import { IProduct } from 'src/interfaces/products';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
 })
-export class ProductDetailComponent {
+export class ProductDetailComponent implements OnInit {
   product!: IProduct;
 
   constructor(
     private _route: ActivatedRoute,
     private _product: ProductService
-  ) {
-    _route.params.subscribe((params) => {
-      const { id } = params;
-      this._product.getProduct(id).subscribe((response: IProduct) => {
-        this.product = response;
-      });
+  ) {}
+
+  ngOnInit(): void {
+    this._route.data.subscribe((data) => {
+      this.product = data['product'];
     });
   }
 }
