@@ -6,6 +6,8 @@ import { ProductsComponent } from './pages/products/products.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProductResolverService } from './services/product-resolver.service';
+import { ProductReviewComponent } from './shared/product-review/product-review.component';
+import { ProductDescriptionComponent } from './shared/product-description/product-description.component';
 
 export const routes: Routes = [
   {
@@ -28,9 +30,18 @@ export const routes: Routes = [
     path: 'product-detail/:id',
     component: ProductDetailComponent,
     resolve: {
-      product : ProductResolverService,
-      // productdemo : ProductResolverService
-    }
+      product: ProductResolverService,
+    },
+    children: [
+      {
+        path: 'review',
+        component: ProductReviewComponent,
+      },
+      {
+        path: 'description',
+        component: ProductDescriptionComponent,
+      },
+    ],
   },
   {
     path: 'admin/create-product',
