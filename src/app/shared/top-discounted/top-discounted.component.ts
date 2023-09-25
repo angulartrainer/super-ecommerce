@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { APIBase } from 'src/app/classes/APIBase';
 import { HttpClient } from '@angular/common/http';
 import { IDiscountedProduct } from 'src/interfaces/products';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'super-top-discounted',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './top-discounted.component.html',
   styleUrls: ['./top-discounted.component.scss'],
 })

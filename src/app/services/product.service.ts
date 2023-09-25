@@ -15,6 +15,10 @@ export class ProductService {
 
   constructor(private _http: HttpClient) {}
 
+  getProduct(id: string) {
+    return this._http.get<IProduct>(`http://localhost:3000/products/${id}`);
+  }
+
   getProducts() {
     // this._http.get('http://localhost:3000/products').pipe(
     //   switchMap((products) => {
