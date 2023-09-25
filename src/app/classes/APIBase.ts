@@ -1,5 +1,6 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnInit, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ProductService } from '../services/product.service';
 
 @Injectable()
 export abstract class APIBase<T> implements OnInit {
@@ -8,11 +9,17 @@ export abstract class APIBase<T> implements OnInit {
   public error: any = null;
   apiURL;
 
+  product: ProductService = inject(ProductService)
+
+
   constructor(apiURL: string, private http: HttpClient) {
     this.apiURL = apiURL;
   }
 
   ngOnInit(): void {
+
+    console.log(this.product.$products);
+
     this.loading = true;
     this.http.get(this.apiURL).subscribe({
       next: (data: any) => {
