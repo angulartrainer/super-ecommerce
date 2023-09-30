@@ -9,15 +9,13 @@ export abstract class APIBase<T> implements OnInit {
   public error: any = null;
   apiURL;
 
-  product: ProductService = inject(ProductService)
-
+  product: ProductService = inject(ProductService);
 
   constructor(apiURL: string, private http: HttpClient) {
     this.apiURL = apiURL;
   }
 
   ngOnInit(): void {
-
     console.log(this.product.$products);
 
     this.loading = true;

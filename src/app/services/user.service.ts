@@ -25,6 +25,7 @@ export class UserService {
           this._router.navigate(['']);
           this.isAdminLoggedIn = true;
           window.sessionStorage.setItem('isAdminLoggedIn', 'true');
+          window.sessionStorage.setItem('access-token', data.accessToken);
           return data;
         })
       );
