@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export interface IDataGridColumn {
@@ -15,8 +15,12 @@ export interface IDataGridColumn {
   styleUrls: ['./data-grid.component.scss'],
 })
 export class DataGridComponent {
-  @Input() data: any[] = [{ id: 1 }];
-  @Input() columns: IDataGridColumn[] = [
-    { header: 'id', columnName: 'id', cell: (element) => `${element.id}` },
-  ];
+  @Input() data: any[] = [];
+  @Input() columns: IDataGridColumn[] = [];
+
+  @Output() rowselected : EventEmitter<any> = new EventEmitter();
+
+  onRowSelect($event: any, row: any){
+    this.rowselected.emit($event);
+  }
 }
