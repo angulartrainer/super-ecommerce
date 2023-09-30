@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, ActivatedRouteSnapshot, RouterLink, RouterOutlet } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { IProduct } from 'src/interfaces/products';
+import { ButtonDemoDirective } from 'src/app/directives/button-demo.directive';
 
 @Component({
   selector: 'super-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink],
+  imports: [CommonModule, RouterOutlet, RouterLink, ButtonDemoDirective],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
 })

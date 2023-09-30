@@ -18,7 +18,7 @@ export const HttpLoggingInterceptor: HttpInterceptorFn = (
   
   return next(request).pipe(tap((event: HttpEvent<any>)=>{
       if(event instanceof HttpResponse) {
-        console.log(`Response: ${event}`);
+        console.log(`Response: ${request.url}: ${JSON.stringify(event.body)}`);
       }
   }))
 
