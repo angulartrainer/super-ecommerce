@@ -4,11 +4,12 @@ import { ActivatedRoute, ActivatedRouteSnapshot, RouterLink, RouterOutlet } from
 import { ProductService } from 'src/app/services/product.service';
 import { IProduct } from 'src/interfaces/products';
 import { ButtonDemoDirective } from 'src/app/directives/button-demo.directive';
+import { BarChartDirective } from 'src/app/directives/bar-chart.directive';
 
 @Component({
   selector: 'super-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, ButtonDemoDirective],
+  imports: [CommonModule, RouterOutlet, RouterLink, ButtonDemoDirective, BarChartDirective],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
 })
