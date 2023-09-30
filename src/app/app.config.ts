@@ -5,12 +5,13 @@ import { routes } from './app.routes';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { ErrorInterceptor } from './services/error-interceptor.fn';
+import { TopDiscountedMockInterceptor } from './services/top-discounted-mock-interceptor.fn';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(
-      withInterceptors([ErrorInterceptor]),
+      withInterceptors([ TopDiscountedMockInterceptor, ErrorInterceptor]),
       withInterceptorsFromDi()),
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'INR' },
     {
