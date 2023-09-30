@@ -10,6 +10,8 @@ import { ProductService } from 'src/app/services/product.service';
 import { IProduct } from 'src/interfaces/products';
 import { ButtonDemoDirective } from 'src/app/directives/button-demo.directive';
 import { BarChartDirective } from 'src/app/directives/bar-chart.directive';
+import { DataGridComponent } from 'src/app/shared/data-grid/data-grid.component';
+import { UserTableDirective } from 'src/app/directives/user-table.directive';
 
 @Component({
   selector: 'super-product-detail',
@@ -20,6 +22,8 @@ import { BarChartDirective } from 'src/app/directives/bar-chart.directive';
     RouterLink,
     ButtonDemoDirective,
     BarChartDirective,
+    DataGridComponent,
+    UserTableDirective
   ],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
@@ -40,14 +44,14 @@ export class ProductDetailComponent implements OnInit {
       this.product = data['product'];
     });
 
-    setInterval(()=>{
-      const _data = [];
-        for (let index = 0; index < 3; index++) {
-          _data[index] = Math.round(Math.random() * 100);
-        }
-        this.data = _data;
-        console.log(this.data);
-    }, 1000)
+    // setInterval(()=>{
+    //   const _data = [];
+    //     for (let index = 0; index < 3; index++) {
+    //       _data[index] = Math.round(Math.random() * 100);
+    //     }
+    //     this.data = _data;
+    //     console.log(this.data);
+    // }, 1000)
 
   }
 }

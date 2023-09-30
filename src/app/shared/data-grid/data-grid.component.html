@@ -1,0 +1,12 @@
+<table class="table-auto">
+  <thead>
+    <tr>
+      <th *ngFor="let column of columns">{{ column.header }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data">
+      <td *ngFor="let column of columns">{{ column.cell(row) }}</td>
+    </tr>
+  </tbody>
+</table>
