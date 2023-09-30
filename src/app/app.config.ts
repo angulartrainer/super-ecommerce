@@ -6,12 +6,13 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptor
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { ErrorInterceptor } from './services/error-interceptor.fn';
 import { TopDiscountedMockInterceptor } from './services/top-discounted-mock-interceptor.fn';
+import { HttpLoggingInterceptor } from './services/http-logging-interceptor.fn';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(
-      withInterceptors([ TopDiscountedMockInterceptor, ErrorInterceptor]),
+      withInterceptors([ HttpLoggingInterceptor, TopDiscountedMockInterceptor, ErrorInterceptor]),
       withInterceptorsFromDi()),
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'INR' },
     {

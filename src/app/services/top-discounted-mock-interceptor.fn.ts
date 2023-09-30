@@ -6,7 +6,7 @@ import {
   HttpRequest,
   HttpResponse,
 } from '@angular/common/http';
-import { of } from 'rxjs';
+import { delay, of } from 'rxjs';
 
 export const TopDiscountedMockInterceptor: HttpInterceptorFn = (
   request: HttpRequest<any>,
@@ -44,7 +44,7 @@ export const TopDiscountedMockInterceptor: HttpInterceptorFn = (
             }
           ]
         })
-      )
+      ).pipe(delay(2000))
   }
 
   return next(request);
