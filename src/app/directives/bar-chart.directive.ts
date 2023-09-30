@@ -1,4 +1,12 @@
-import { Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  Renderer2,
+  SimpleChanges,
+} from '@angular/core';
 
 import * as ApexCharts from 'apexcharts';
 import { ProductService } from '../services/product.service';
@@ -7,7 +15,12 @@ import { ProductService } from '../services/product.service';
   selector: '[superBarChart]',
   standalone: true,
 })
-export class BarChartDirective implements OnInit {
+export class BarChartDirective implements OnInit, OnChanges {
+  @Input() data: number[] = [];
+  @Input() xaxis: string[] = [];
+
+  private chart: any;
+
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit(): void {
@@ -15,30 +28,40 @@ export class BarChartDirective implements OnInit {
     this.renderer.appendChild(this.el.nativeElement, container);
 
     var options = {
-      series: [{
-      data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
-    }],
-      chart: {
-      type: 'bar',
-      height: 350
-    },
-    plotOptions: {
-      bar: {
-        borderRadius: 4,
-        horizontal: true,
-      }
-    },
-    dataLabels: {
-      enabled: false
-    },
-    xaxis: {
-      categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
-        'United States', 'China', 'Germany'
+      series: [
+        {
+          name: "rating",
+          data: this.data,
+        },
       ],
-    }
+      chart: {
+        type: 'bar',
+        height: 350,
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 4,
+          horizontal: true,
+        },
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      xaxis: {
+        categories: this.xaxis,
+      },
     };
 
-    const chart = new ApexCharts(container, options);
-    chart.render();
+    this.chart = new ApexCharts(container, options);
+    this.chart.render();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    
+    if(this.chart) {
+      this.chart.updateSeries([
+        { name : "rating", data: changes['data']['currentValue'] }
+      ])
+    }
   }
 }
