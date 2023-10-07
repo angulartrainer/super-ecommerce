@@ -68,6 +68,23 @@ export class DemoLifecycleComponent
 
     console.log('open modal');
 
-    this.modalService.open(DemoContentModalComponent, config);
+    const { overlay, instance } =
+      this.modalService.open<DemoContentModalComponent>(
+        DemoContentModalComponent,
+        config
+      );
+
+    instance.ok.subscribe(() => {
+      console.log('Ok');
+    });
+
+    instance.close.subscribe(() => {
+      console.log('Close');
+      overlay.dispose();
+    });
+
+    overlay.backdropClick().subscribe(() => {
+      overlay.dispose();
+    });
   }
 }

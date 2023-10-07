@@ -22,7 +22,7 @@ export class ModalService {
   open<T>(component: any, config: OverlayConfig) {
     const overlayRef = this.overlay.create(config);
     const componentRef: ComponentRef<T> = this.attach<T>(component, overlayRef);
-    return overlayRef;
+    return { overlay: overlayRef, instance: componentRef.instance };
   }
 
   attach<T>(component: any, overlayRef: OverlayRef): ComponentRef<T> {
