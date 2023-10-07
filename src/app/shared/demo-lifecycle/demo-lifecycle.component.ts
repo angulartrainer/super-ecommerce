@@ -10,6 +10,9 @@ import {
 import { CommonModule } from '@angular/common';
 import { DemoService } from 'src/app/services/demo.service';
 import { Subject, takeUntil } from 'rxjs';
+import { ModalService } from '../modal.service';
+import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
+import { DemoContentModalComponent } from '../demo-content-modal/demo-content-modal.component';
 
 @Component({
   selector: 'super-demo-lifecycle',
@@ -23,12 +26,14 @@ export class DemoLifecycleComponent
 {
   destroy$ = new Subject<void>();
 
-  constructor(private _demo: DemoService) {
-    this._demo.random$
-    .pipe(takeUntil(this.destroy$))
-    .subscribe((random) => {
-      console.log(random);
-    })
+  constructor(
+    private _demo: DemoService,
+    private modalService: ModalService,
+    private overlay: Overlay
+  ) {
+    this._demo.random$.pipe(takeUntil(this.destroy$)).subscribe((random) => {
+      // console.log(random);
+    });
   }
 
   @Input() message: string = '';
@@ -48,5 +53,21 @@ export class DemoLifecycleComponent
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  openModal() {
+    const config = new OverlayConfig({
+      hasBackdrop: true,
+      panelClass: 'modal',
+      positionStrategy: this.overlay
+        .position()
+        .global()
+        .centerHorizontally()
+        .centerVertically(),
+    });
+
+    console.log('open modal');
+
+    this.modalService.open(DemoContentModalComponent, config);
   }
 }
